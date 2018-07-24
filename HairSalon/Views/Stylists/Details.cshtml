@@ -1,1 +1,9 @@
-<h1>@Model.GetDescription()</h1>
+
+<h1>hello</h1>
+<ol>
+@foreach (var client in @Model["clis"])
+{
+  <li>@client.GetId()'>@client.GetName()</a></li>
+}
+</ol>
+<p><a href='/'>Return to Main Page</a></p>

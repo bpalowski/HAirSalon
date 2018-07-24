@@ -7,27 +7,32 @@ namespace HairSalon.Controllers
 {
   public class StylistsController : Controller
   {
-    [HttpGet("/Stylists")]
+    [HttpGet("/stys")]
         public ActionResult Index()
         {
             List<Stylist> allStylists = Stylist.GetAll();
             return View(allStylists);
         }
-
-        [HttpGet("/Stylists/new")]
+        [HttpGet("/stys/new")]
         public ActionResult CStylist()
         {
             return View();
         }
-
-        [HttpPost("/Stylists")]
+        [HttpPost("/stylist/{id}/clients")]
         public ActionResult Create()
         {
             Stylist newStylist = new Stylist(Request.Form["newStylist"]);
             newStylist.Save();
             List<Stylist> allStylists = Stylist.GetAll();
-            return View("Index", allStylists);
+            return View("Index");
         }
+        [HttpGet("/stylist/{id}/info")]
+          public ActionResult Info(int id)
+        {
+          Stylist thisStylist = Stylist.Find(id);
+          return View(thisStylist);
+        }
+
 
 
 

@@ -6,26 +6,14 @@ namespace HairSalon.Models
     public class Stylist
     {
       private int _styId;
-  private string _stylistName;
+      private string _stylistName;
 
   public Stylist(string StylistName, int StyId = 0)
   {
     _stylistName = StylistName;
     _styId = StyId;
   }
-  public static void DeleteAll()
-{
-  MySqlConnection conn = DB.Connection();
-  conn.Open();
-  var cmd = conn.CreateCommand() as MySqlCommand;
-  cmd.CommandText = @"DELETE FROM stylists;";
-  cmd.ExecuteNonQuery();
-  conn.Close();
-  if (conn != null)
-  {
-      conn.Dispose();
-  }
-}
+
   public override bool Equals(System.Object otherStylist)
 {
 if(!(otherStylist is Stylist))
@@ -93,36 +81,7 @@ return this.GetStyId().GetHashCode();
     }
             return allStylists;
         }
-        // public List<Client> GetClients()
-        // {
-        //     List<Client> allStylistClients = new List<Client> {};
-        //     MySqlConnection conn = DB.Connection();
-        //     conn.Open();
-        //     var cmd = conn.CreateCommand() as MySqlCommand;
-        //     cmd.CommandText = @"SELECT * FROM clients WHERE Stylist_Id = @stylistId;";
-        //
-        //     MySqlParameter StylistId = new MySqlParameter();
-        //     StylistId.ParameterName = "@stylistId";
-        //     StylistId.Value = this._stylistId;
-        //     cmd.Parameters.Add(StylistId);
-        //
-        //
-        //     var rdr = cmd.ExecuteReader() as MySqlDataReader;
-        //     while(rdr.Read())
-        //     {
-        //       int Id = rdr.GetInt32(0);
-        //       string Name = rdr.GetString(1);
-        //       int StylistId = rdr.GetInt32(2);
-        //       Client newClient = new Client(Name, StylistId, Id);
-        //       allStylistClients.Add(newClient);
-        //     }
-        //     conn.Close();
-        //     if (conn != null)
-        //     {
-        //         conn.Dispose();
-        //     }
-        //     return allStylistClients;
-        // }
+
 
         public static Stylist Find(int id)
      {
@@ -190,5 +149,18 @@ return this.GetStyId().GetHashCode();
         conn.Dispose();
       }
     }
+    public static void DeleteAll()
+  {
+    MySqlConnection conn = DB.Connection();
+    conn.Open();
+    var cmd = conn.CreateCommand() as MySqlCommand;
+    cmd.CommandText = @"DELETE FROM stylists;";
+    cmd.ExecuteNonQuery();
+    conn.Close();
+    if (conn != null)
+    {
+        conn.Dispose();
+    }
+  }
     }
 }
