@@ -11,34 +11,14 @@ namespace HairSalon.Controllers
     public ActionResult List()
     {
       List<Client> allClients = Client.GetAll();
-      // return new EmptyResult(); //Test 1 will fail
-      // return View(0); //Test 2 will fail
-      return View(allClients);  //Test will pass
-    }
-    [HttpGet("/clis/prevent")]
-    public ActionResult Prevent()
-    {
-      // return new EmptyResult(); //Test 1 will fail
-      // return View(0); //Test 2 will fail
-      return View();  //Test will pass
+      return View(allClients);
     }
     [HttpGet("/clis/new")]
     public ActionResult CreateForm()
     {
-      List<Stylist> listStylists = Stylist.GetAll();
-      if(listStylists.Count > 0)
-      {
-        // return new EmptyResult(); //Test 1 will fail
-        // return View(0); //Test 2 will fail
-        return View(listStylists); //Test will pass
-      }
-      else
-      {
-        return RedirectToAction("Prevent");
-      }
 
-    }
-
+        return View();
+      }
     [HttpPost("/clis")]
     public ActionResult Create()
     {
@@ -60,12 +40,12 @@ namespace HairSalon.Controllers
           thisClient.Edit(Request.Form["newClient"]);
           return RedirectToAction("List");
         }
-     [HttpPost("/clis/{id}/delete")]
-      public ActionResult Remove(int id)
+     [HttpGet("/clis/{id}/delete")]
+      public ActionResult No(int id)
       {
           Client thisClient = Client.Find(id);
           thisClient.Delete();
-          return RedirectToAction("Remove");
+          return View("No");
       }
 
 }

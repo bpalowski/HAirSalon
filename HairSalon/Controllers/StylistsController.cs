@@ -46,7 +46,6 @@ namespace HairSalon.Controllers
               thisStylist.Delete();
               return View("DStylist");
           }
-
           [HttpGet("/stys/{id}")]
           public ActionResult Details(int id)
           {
