@@ -1,9 +1,11 @@
-
-<h1>hello</h1>
-<ol>
-@foreach (var client in @Model["clis"])
+@if (@Model["selectedClients"].Count != 0)
 {
-  <li>@client.GetId()'>@client.GetName()</a></li>
+<h2>Clients:</h2>
+  <ul>
+    @foreach(var client in Model["selectedClients"])
+    {
+    <li>@client.GetName()</li>
+    }
+  </ul>
 }
-</ol>
-<p><a href='/'>Return to Main Page</a></p>
+<p><a href='/'>home</a></p>

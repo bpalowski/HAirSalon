@@ -1,0 +1,8 @@
+
+<h2>Hello :@Model.GetStylistName()</h2>
+<form action="/stys/@Model.GetStyId()/update" method="post">
+    <label for="upd">Name:</label>
+    <input id="upd" type="text" name="upd" value="@Model.GetStylistName()">
+    <button type="submit">Edit</button>
+</form>
+<h4><a href="/stys">Return home</a></h4>
