@@ -55,11 +55,8 @@ namespace HairSalon.Controllers
             List<Client> allClients = Client.GetAll();
             model.Add("allClients", allClients);
             model.Add("selectedClients", selectedClients);
-            // model.Add("selectedStylist", selectedStylist);
-            // return new EmptyResult(); //Test 1 will fail
-            // return View(0); //Test 2 will fail
-            return View(model); //Test will pass
-    }
+            
+            return View(model); 
 
 
 
