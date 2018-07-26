@@ -115,7 +115,7 @@ namespace HairSalon.Models
       {
           conn.Dispose();
       }
-      // return new List<Client>{}; //Test will fail
+      
       return allClients; //Test will pass
     }
 
