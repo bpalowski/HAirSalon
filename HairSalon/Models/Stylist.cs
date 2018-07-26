@@ -110,8 +110,8 @@ return this.GetStyId().GetHashCode();
        {
            conn.Dispose();
        }
-       // return new Stylist("", 0); //Test will fail
-       return newStylist; //Test will pass
+       
+       return newStylist; 
       }
       public void Edit(string newName)
     {
