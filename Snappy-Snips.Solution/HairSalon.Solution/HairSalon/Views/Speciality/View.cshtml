@@ -1,0 +1,21 @@
+@using HairSalon.Models;
+<h1>Hello this is info reguarding the related Speciality</h1>
+<h1>Type of Speciality :@Model["specialty"].GetDescription()</h1>
+<h2>Stylist with this skill</h2>
+    @foreach(var stylist in Model["stylists"])
+    {
+      <p>@stylist.GetStylistName()</p>
+    }
+
+<form action="/stys/@Model["specialty"].GetId()/addStys" method="post">
+      <label for="newstylistid">Add Stylist with this skill</label>
+      <select name="newstylistid" required>
+        @foreach(var stylist in Stylist.GetAll())
+        {
+          <option value="@stylist.GetStyId()">@stylist.GetStylistName()</option>
+        }
+      </select>
+      <button class="btn btn-success" type="click">Add</button>
+    </form>
+
+    <p><a href='/'>Back home<a/></p>
