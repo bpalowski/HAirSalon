@@ -55,12 +55,9 @@ namespace HairSalon.Controllers
             List<Client> allClients = Client.GetAll();
             model.Add("allClients", allClients);
             model.Add("selectedClients", selectedClients);
-            
-            return View(model); 
 
-
-
-
+            return View(model);
 
       }
     }
+  }
